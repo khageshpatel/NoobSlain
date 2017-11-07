@@ -21,9 +21,11 @@
   "homepage": "https://github.com/khageshpatel/NoobSlain#readme",
   "dependencies": {
     "discord.js": "^11.2.1",
+    "ffmpeg-binaries": "^3.2.2-3",
     "i": "^0.3.6",
     "jquery": "^3.2.1",
     "jsdom": "^11.3.0",
+    "opusscript": "0.0.4",
     "request": "^2.83.0",
     "requestify": "^0.2.5",
     "xmlhttprequest": "^1.8.0"

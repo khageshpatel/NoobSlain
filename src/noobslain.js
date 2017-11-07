@@ -24,6 +24,25 @@ client.on("message", (message) => {
     content.startsWith("/codename"))
   {
     lib.sendKodenamesLink(content,channel,client);
+  } else if(content.toLowerCase().startsWith("/ns ")){
+    let cmd = content.toLowerCase().split(" ")[1];
+    if(cmd === "j" && message.member.voiceChannel)
+      message.member.voiceChannel.join().catch(console.log);
+    else if(cmd === "l" && message.member.voiceChannel)
+      message.member.voiceChannel.leave();
+    else if(cmd === "c")
+    {
+      channel.send("Commands: \n/ns [j|l|c] \n/ping \n/blame slain"
+                  + "\n[/kodename|/codename] names \n!cry !disaster !disastah"
+                  + "\n!zhou !patience !pfz !pz"
+                  + "\n!dead !all_dead"
+                  + "\n!wow !waow"
+                  + "\n!brutal !bsr !brutal savage rekt"
+                  );
+    }
+  }
+  else if(content.startsWith("!")){
+    lib.playSound(message);
   }
 
 });

@@ -99,11 +99,56 @@ export function sendKodenamesLink(request, channel,client){
       let plebs = data.id.split("+")[0];
       user1[0].send("You have been invited to play kodenmaes you are clue master:" +
                     " http://www.syeedibnfaiz.com/codenames/#"+clueMaster);
-      user1[0].send("You have been invited to play kodenmaes you are a clue master:" +
+      user2[0].send("You have been invited to play kodenmaes you are a clue master:" +
                     " http://www.syeedibnfaiz.com/codenames/#"+clueMaster);
       user1.slice(1).forEach(x=>x.send("You have been invited to play kodenmaes you are dirty pleb:"
                     + " http://www.syeedibnfaiz.com/codenames/#"+plebs));
       user2.slice(1).forEach(x=>x.send("You have been invited to play kodenmaes you are dirty pleb:"
                     + " http://www.syeedibnfaiz.com/codenames/#"+plebs));
   });
+}
+
+function soundDispatcher(message, soundFile){
+  message.member.voiceChannel.join().
+  then(connection => {
+    const dispatcher = connection.playFile(soundFile);
+    /*dispatcher.on('end', () => {
+      console.log("Sound ended");
+    });*/
+    dispatcher.on('error', e => {
+      console.log(e);
+    });
+  }).catch(console.log);
+}
+
+export function playSound(message){
+  let command = message.content.toLowerCase().trim();
+  if(message.member.voiceChannel)
+  {
+    if(command === "!cry")
+      soundDispatcher(message, "./resource/Chatwheel_crybaby.wav");
+    else if(command === "!disaster" ||
+            command === "!disastah")
+      soundDispatcher(message, "./resource/Chatwheel_disastah.wav");
+    else if(command === "!patience" ||
+            command === "!zhou" ||
+            command === "!pfz" ||
+            command === "!pz"
+          )
+      soundDispatcher(message, "./resource/Chatwheel_patience.wav");
+    else if(command === "!dead"||
+            command === "!all_dead")
+      soundDispatcher(message, "./resource/Chatwheel_all_dead.wav");
+    else if(command === "!wow"||
+            command === "!waow")
+        soundDispatcher(message, "./resource/Chatwheel_wow.wav");
+    else if(command === "!brutal"||
+            command === "!bsr"||
+            command === "!brutal savage rekt"
+          )
+          soundDispatcher(message, "./resource/Chatwheel_brutal.wav");
+
+
+  }
+
 }
